@@ -1,0 +1,6 @@
+framework module PLStrechyViewController {
+  umbrella header "PLStrechyViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}
