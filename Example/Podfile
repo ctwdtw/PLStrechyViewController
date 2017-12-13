@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PLStrechyViewController_Example' do
+  pod 'PLStrechyViewController', :path => '../'
+
+  target 'PLStrechyViewController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
