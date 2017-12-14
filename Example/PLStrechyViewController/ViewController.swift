@@ -8,6 +8,13 @@
 
 import UIKit
 import PLStrechyViewController
+/*
+class ViewController: UIViewController{
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+}*/
 
 class ViewController: PLStrechyViewController {
   
@@ -16,6 +23,7 @@ class ViewController: PLStrechyViewController {
     let image = UIImage(named: "what_is_forgiveness")
     self.feedImage = image
     self.feedText = hardcodeFeedText
+    self.navigationItem.title = "聞信息"
   }
 }
 
