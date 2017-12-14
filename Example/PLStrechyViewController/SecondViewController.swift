@@ -12,10 +12,6 @@ class SecondViewController: PLStrechyViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let image = UIImage(named: "what_is_forgiveness")
-    self.feedImage = image
-    self.feedText = hardcodeFeedText
-    // Do any additional setup after loading the view.
   }
   
   override func didReceiveMemoryWarning() {
