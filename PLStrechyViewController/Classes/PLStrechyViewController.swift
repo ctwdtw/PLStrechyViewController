@@ -55,11 +55,18 @@ open class PLStrechyViewController: UIViewController {
   
   override open func viewDidLoad() {
     super.viewDidLoad()
+    configureSubviews()
+  }
+  
+  private func configureSubviews() {
+    //`messageTextView`
     messageTextView.delegate = self
     messageTextView.isScrollEnabled = false
+    feedText = feedText == nil ? defaultFeedText : feedText
+   
+    //strechy `feedImageView`
     strechyViewHeight.constant = StrechyViewConst.defaultHeight
     feedImage = feedImage == nil ? defaultFeedImage : feedImage
-    feedText = feedText == nil ? defaultFeedText : feedText
   }
 
   override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
