@@ -90,12 +90,17 @@ open class PLStrechyViewController: UIViewController {
 extension PLStrechyViewController: UITextViewDelegate {}
 
 // MARK:// UI Business Logic
-let navigationBarHeight: CGFloat = 44
-let statusBarHeight:CGFloat = 20
-
 extension PLStrechyViewController {
-  // MARK: // strechyView Constants
+  var hasNavigationBar: Bool {
+    
+    return navigationController?.navigationBar == nil ? false : true
+    
+  }
+  static var statusBarHeight: CGFloat {
+    return UIApplication.shared.statusBarFrame.size.height
+  }
   
+  // MARK: // strechyView Constants
   struct StrechyViewConst {
     static let animationDuration: TimeInterval = 0.3
     static let defaultHeight: CGFloat = UIScreen.main.bounds.size.width/5*3
@@ -111,14 +116,14 @@ extension PLStrechyViewController {
   
   struct ControllingViewConst {
     static var extendPosition: CGFloat = 0
-    static var collapsePosition: CGFloat {
+    static func collapsePosition(_ hasNavigationBar: Bool) -> CGFloat {
+      let navigationBarHeigth: CGFloat = hasNavigationBar ? 44.0 : 0.0
       let returnValue = -StrechyViewConst.defaultHeight
         + abs(StrechyViewConst.collapseHeadPosition)
-        + navigationBarHeight + statusBarHeight
-      
+        + navigationBarHeigth + statusBarHeight
       return returnValue
-      
     }
+    
   }
   
   // MARK: // strechyView States
@@ -146,11 +151,14 @@ extension PLStrechyViewController {
     case controllingViewNotReachPositonYet
     case positionOverReached
     
-    init(_ strechyViewHeadPosition: CGFloat, _ verticalSpaceToControllingView: CGFloat ) {
+    init(_ strechyViewHeadPosition: CGFloat,
+         _ verticalSpaceToControllingView: CGFloat,
+         _ hasNavigationBar: Bool) {
+      
       if strechyViewHeadPosition > StrechyViewConst.collapseHeadPosition {
         self = .strechyViewNotReachHeadPositionYet
         
-      } else if verticalSpaceToControllingView > ControllingViewConst.collapsePosition {
+      } else if verticalSpaceToControllingView > ControllingViewConst.collapsePosition(hasNavigationBar) {
         self = .controllingViewNotReachPositonYet
         
       } else {
@@ -199,7 +207,8 @@ extension PLStrechyViewController {
     }
     
     let collapseState = StrechyViewCollapseState(strechyViewHeadPosition.constant,
-                                                 strechyViewControllingViewVerticalSpace.constant)
+                                                 strechyViewControllingViewVerticalSpace.constant,
+                                                 hasNavigationBar)
     
     if collapseState == .strechyViewNotReachHeadPositionYet {
       scrollView.setContentOffset(CGPoint.zero, animated: false)
@@ -212,7 +221,7 @@ extension PLStrechyViewController {
       
     } else if collapseState == .positionOverReached {
       strechyViewHeadPosition.constant = StrechyViewConst.collapseHeadPosition
-      strechyViewControllingViewVerticalSpace.constant = ControllingViewConst.collapsePosition
+      strechyViewControllingViewVerticalSpace.constant = ControllingViewConst.collapsePosition(hasNavigationBar)
       
     }
   }
@@ -240,7 +249,7 @@ extension PLStrechyViewController {
   fileprivate func magnetEffectAnimationForCollapse() {
     UIView.animate(withDuration: StrechyViewConst.animationDuration) {
       self.strechyViewHeadPosition.constant = StrechyViewConst.collapseHeadPosition
-      self.strechyViewControllingViewVerticalSpace.constant = ControllingViewConst.collapsePosition
+      self.strechyViewControllingViewVerticalSpace.constant = ControllingViewConst.collapsePosition(self.hasNavigationBar)
       self.strechyViewHeight.constant = StrechyViewConst.defaultHeight
       self.view.layoutIfNeeded()
     }
