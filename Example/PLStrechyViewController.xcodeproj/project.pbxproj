@@ -13,7 +13,6 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		63295B141FE3647700B1DFD3 /* NormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295B131FE3647700B1DFD3 /* NormalViewController.swift */; };
 		635D9FDD1FE23F6D00DC1F6E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D9FDC1FE23F6D00DC1F6E /* SecondViewController.swift */; };
 		AC762B627087B716F2E05789 /* Pods_PLStrechyViewController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C1AE7056384579A75D344BB /* Pods_PLStrechyViewController_Example.framework */; };
 		E8D09C517EDD94A1ECCE2424 /* Pods_PLStrechyViewController_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD655996613D7C388B2C78A /* Pods_PLStrechyViewController_Tests.framework */; };
@@ -41,7 +40,6 @@
 		607FACE51AFB9204008FA782 /* PLStrechyViewController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PLStrechyViewController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		63295B131FE3647700B1DFD3 /* NormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalViewController.swift; sourceTree = "<group>"; };
 		635D9FDC1FE23F6D00DC1F6E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		89A8926437BB6AA46D3510BE /* Pods-PLStrechyViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLStrechyViewController_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PLStrechyViewController_Example/Pods-PLStrechyViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8FD655996613D7C388B2C78A /* Pods_PLStrechyViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PLStrechyViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +109,6 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				635D9FDC1FE23F6D00DC1F6E /* SecondViewController.swift */,
-				63295B131FE3647700B1DFD3 /* NormalViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -377,7 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				635D9FDD1FE23F6D00DC1F6E /* SecondViewController.swift in Sources */,
-				63295B141FE3647700B1DFD3 /* NormalViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

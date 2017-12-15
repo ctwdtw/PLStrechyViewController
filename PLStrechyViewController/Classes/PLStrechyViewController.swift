@@ -81,6 +81,13 @@ open class PLStrechyViewController: UIViewController {
                                         with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     
+    //work around, this could be apple's bug: `viewWillTransition:to size:with coordinate`
+    //was called before `viewDidLoad` in as second child vc of an instance of UITabBarController
+    //which can cause `messageTextView` become nil therefore cause crash.
+    guard let messageTextView = messageTextView else {
+      return
+    }//end work around
+    
     messageTextView.isScrollEnabled = false
     
     self.layoutStrechyView()
