@@ -66,7 +66,8 @@ open class PLStrechyViewController: UIViewController {
     feedText = feedText == nil ? defaultFeedText : feedText
     
     //strechy `feedImageView`
-    strechyViewHeight.constant = StrechyViewConst.defaultHeight
+    //strechyViewHeight.constant = StrechyViewConst.defaultHeight
+    layoutStrechyView()
     feedImage = feedImage == nil ? defaultFeedImage : feedImage
     
     //navigation Bar
@@ -81,25 +82,30 @@ open class PLStrechyViewController: UIViewController {
     super.viewWillTransition(to: size, with: coordinator)
     
     messageTextView.isScrollEnabled = false
+    
+    self.layoutStrechyView()
+    coordinator.animate(alongsideTransition: nil) { (_) in
+      //after transition, you can put additional code here
+      self.messageTextView.isScrollEnabled = true
+    }
+  }
+  
+  private func layoutStrechyView() {
     if UIDevice.current.orientation.isLandscape {
       landscapeLayout()
     } else {
       protraitLayout()
     }
-    
-    coordinator.animate(alongsideTransition: nil) { (_) in
-      self.messageTextView.isScrollEnabled = true
-    }
   }
   
-  func landscapeLayout() {
-    strechyViewHeight.constant = navigationController?.navigationBar == nil ? 0 : 32
+  private func landscapeLayout() {
+    strechyViewHeight.constant = StrechyViewConst.defaultHeight //navigationController?.navigationBar == nil ? 0 : 32
     strechyViewAspectRatio.isActive = false
     strechyViewHeadPosition.constant = 0
     strechyViewControllingViewVerticalSpace.constant = 0
   }
   
-  func protraitLayout() {
+  private func protraitLayout() {
     strechyViewHeight.constant = StrechyViewConst.defaultHeight
     strechyViewAspectRatio.isActive = true
   }
@@ -141,7 +147,16 @@ extension PLStrechyViewController {
   // MARK: // strechyView Constants
   struct StrechyViewConst {
     static let animationDuration: TimeInterval = 0.3
-    static let defaultHeight: CGFloat = UIScreen.main.bounds.size.width/5*3
+    static var defaultHeight: CGFloat {
+      if UIDevice.current.orientation.isPortrait {
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        let trueWidht = min(width, height)
+        return trueWidht/5*3
+      } else {
+        return PLStrechyViewController.navigationBarHeight
+      }
+    }
     static var maxHeight: CGFloat {
       return defaultHeight * 1.5
     }
