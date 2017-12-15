@@ -1,17 +1,19 @@
 //
-//  SecondViewController.swift
+//  NormalViewController.swift
 //  PLStrechyViewController_Example
 //
-//  Created by Paul Lee on 2017/12/14.
+//  Created by Paul Lee on 2017/12/15.
 //  Copyright © 2017年 CocoaPods. All rights reserved.
 //
 
 import UIKit
-import PLStrechyViewController
-class SecondViewController: PLStrechyViewController {
+
+class NormalViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
   }
   
   override func didReceiveMemoryWarning() {
@@ -21,6 +23,7 @@ class SecondViewController: PLStrechyViewController {
   
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
+    
   }
   
   /*

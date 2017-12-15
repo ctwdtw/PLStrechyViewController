@@ -41,6 +41,7 @@ open class PLStrechyViewController: UIViewController {
   @IBOutlet weak var strechyViewHeight: NSLayoutConstraint!
   @IBOutlet weak var strechyViewHeadPosition: NSLayoutConstraint!
   @IBOutlet weak var strechyViewControllingViewVerticalSpace: NSLayoutConstraint!
+  @IBOutlet var strechyViewAspectRatio: NSLayoutConstraint!
   
   override final public func loadView() {
     let view = viewFromNib()
@@ -56,10 +57,6 @@ open class PLStrechyViewController: UIViewController {
   override open func viewDidLoad() {
     super.viewDidLoad()
     configureSubviews()
-    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-    self.navigationController?.navigationBar.shadowImage = UIImage()
-    self.navigationController?.navigationBar.isTranslucent = true
-    self.navigationController?.view.backgroundColor = .clear
   }
   
   private func configureSubviews() {
@@ -71,15 +68,43 @@ open class PLStrechyViewController: UIViewController {
     //strechy `feedImageView`
     strechyViewHeight.constant = StrechyViewConst.defaultHeight
     feedImage = feedImage == nil ? defaultFeedImage : feedImage
+    
+    //navigation Bar
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
+    self.navigationController?.navigationBar.isTranslucent = true
+    self.navigationController?.view.backgroundColor = .clear
   }
   
-  override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+  override open func viewWillTransition(to size: CGSize,
+                                        with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
+    
+    messageTextView.isScrollEnabled = false
+    if UIDevice.current.orientation.isLandscape {
+      landscapeLayout()
+    } else {
+      protraitLayout()
+    }
+    
     coordinator.animate(alongsideTransition: nil) { (_) in
-      //
+      self.messageTextView.isScrollEnabled = true
     }
   }
   
+  func landscapeLayout() {
+    strechyViewHeight.constant = navigationController?.navigationBar == nil ? 0 : 32
+    strechyViewAspectRatio.isActive = false
+    strechyViewHeadPosition.constant = 0
+    strechyViewControllingViewVerticalSpace.constant = 0
+  }
+  
+  func protraitLayout() {
+    strechyViewHeight.constant = StrechyViewConst.defaultHeight
+    strechyViewAspectRatio.isActive = true
+  }
+  
+  //TODO:// can remove this?
   override open func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     messageTextView.isScrollEnabled = true
@@ -97,7 +122,20 @@ extension PLStrechyViewController {
     
   }
   static var statusBarHeight: CGFloat {
-    return UIApplication.shared.statusBarFrame.size.height
+    if UIDevice.current.orientation.isPortrait {
+      return UIApplication.shared.statusBarFrame.size.height
+    } else {
+      return 0.0
+    }
+  
+  }
+  
+  static var navigationBarHeight: CGFloat {
+    if UIDevice.current.orientation.isPortrait {
+      return 44.0
+    } else {
+      return 32.0
+    }
   }
   
   // MARK: // strechyView Constants
@@ -117,7 +155,7 @@ extension PLStrechyViewController {
   struct ControllingViewConst {
     static var extendPosition: CGFloat = 0
     static func collapsePosition(_ hasNavigationBar: Bool) -> CGFloat {
-      let navigationBarHeigth: CGFloat = hasNavigationBar ? 44.0 : 0.0
+      let navigationBarHeigth: CGFloat = hasNavigationBar ? PLStrechyViewController.navigationBarHeight : 0.0
       let returnValue = -StrechyViewConst.defaultHeight
         + abs(StrechyViewConst.collapseHeadPosition)
         + navigationBarHeigth + statusBarHeight
@@ -172,11 +210,6 @@ extension PLStrechyViewController {
 extension PLStrechyViewController {
   // MARK: // strechyView Control logic
   fileprivate func extendStrechyView(_ scrollView: UIScrollView, scrolled offsetY: CGFloat) {
-    let orientation = UIDevice.current.orientation
-    guard orientation == UIDeviceOrientation.portrait else {
-      return
-    }
-    
     guard strechyViewHeight.constant < StrechyViewConst.maxHeight else {
       scrollView.bounces = false
       return
@@ -228,6 +261,11 @@ extension PLStrechyViewController {
   
   // MARK: // magnetEffet Helper
   fileprivate func magnetEffectAnimation() {
+    let orientation = UIDevice.current.orientation
+    guard orientation == UIDeviceOrientation.portrait else {
+      return
+    }
+    
     if strechyViewHeadPosition.constant > StrechyViewConst.criticalHeadPosition {
       magnetEffectAnimationForExtend()
       
@@ -260,6 +298,12 @@ extension PLStrechyViewController {
 // MARK: // UIScrollViewDelegate
 extension PLStrechyViewController: UIScrollViewDelegate {
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    
+    let orientation = UIDevice.current.orientation
+    guard orientation == UIDeviceOrientation.portrait else {
+      return
+    }
+    
     let offsetY = scrollView.contentOffset.y
     
     if offsetY <= 0 { //圖片向下延展

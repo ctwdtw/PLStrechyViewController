@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="hWb-B6-Gml">
             <objects>
-                <viewController id="WVZ-U5-H4w" customClass="ViewController" customModule="PLStrechyViewController_Example" sceneMemberID="viewController">
+                <viewController id="WVZ-U5-H4w" customClass="ViewController" customModule="PLStrechyViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ubv-7a-D4J"/>
                         <viewControllerLayoutGuide type="bottom" id="f1h-NZ-PPI"/>
@@ -20,6 +20,7 @@
                     <view key="view" contentMode="scaleToFill" id="NRt-Ul-Qha">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="6eJ-GH-DWF"/>
                 </viewController>
@@ -98,10 +99,28 @@
             </objects>
             <point key="canvasLocation" x="2730" y="123.59154929577466"/>
         </scene>
+        <!--Normal View Controller-->
+        <scene sceneID="ZHk-Zk-u4F">
+            <objects>
+                <viewController id="f5x-LS-ZWo" customClass="NormalViewController" customModule="PLStrechyViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wHg-jN-wmL"/>
+                        <viewControllerLayoutGuide type="bottom" id="QWR-dB-ggO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kVE-Rw-hSO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k5C-an-WaB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1268" y="1563"/>
+        </scene>
         <!--Item-->
         <scene sceneID="ZIQ-l0-TOz">
             <objects>
-                <viewController id="y3y-Ra-uFz" customClass="SecondViewController" customModule="PLStrechyViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="y3y-Ra-uFz" customClass="NormalViewController" customModule="PLStrechyViewController_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="am3-37-QyN"/>
                         <viewControllerLayoutGuide type="bottom" id="MLP-XJ-CAo"/>
@@ -123,6 +142,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GtS-kB-moV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6LO-b8-Gp2">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

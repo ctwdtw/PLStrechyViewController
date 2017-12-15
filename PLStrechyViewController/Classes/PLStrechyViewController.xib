@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="feedImageView" destination="Dt3-nX-g4N" id="GgD-oy-BbX"/>
                 <outlet property="messageTextView" destination="3K9-15-RVC" id="UqO-Da-OEs"/>
+                <outlet property="strechyViewAspectRatio" destination="rJ1-IH-QS6" id="ORW-DG-KBV"/>
                 <outlet property="strechyViewControllingViewVerticalSpace" destination="QNR-U9-3ZS" id="Qxp-k2-GwH"/>
                 <outlet property="strechyViewHeadPosition" destination="f7a-P8-gpH" id="yts-Px-ALX"/>
                 <outlet property="strechyViewHeight" destination="mVg-3F-Jq9" id="OAD-b3-ROf"/>
@@ -53,8 +54,10 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="3K9-15-RVC" secondAttribute="trailing" id="5gE-X7-9pB"/>
                 <constraint firstItem="mCa-QO-E81" firstAttribute="centerX" secondItem="ejR-wf-eY0" secondAttribute="centerX" id="Ag3-Zi-FtZ"/>
+                <constraint firstItem="geq-R6-dSH" firstAttribute="trailing" secondItem="mCa-QO-E81" secondAttribute="trailing" priority="999" id="DBx-Jh-UUc"/>
                 <constraint firstItem="3K9-15-RVC" firstAttribute="top" secondItem="mCa-QO-E81" secondAttribute="bottom" id="QNR-U9-3ZS"/>
                 <constraint firstItem="geq-R6-dSH" firstAttribute="bottom" secondItem="3K9-15-RVC" secondAttribute="bottom" id="ROr-QN-3sG"/>
+                <constraint firstItem="mCa-QO-E81" firstAttribute="leading" secondItem="geq-R6-dSH" secondAttribute="leading" priority="999" id="enn-cV-IYT"/>
                 <constraint firstItem="mCa-QO-E81" firstAttribute="top" secondItem="ejR-wf-eY0" secondAttribute="top" id="f7a-P8-gpH"/>
                 <constraint firstItem="3K9-15-RVC" firstAttribute="leading" secondItem="ejR-wf-eY0" secondAttribute="leading" id="njV-z8-igy"/>
             </constraints>
