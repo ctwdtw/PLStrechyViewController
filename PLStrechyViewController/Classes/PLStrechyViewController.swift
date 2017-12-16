@@ -106,7 +106,7 @@ open class PLStrechyViewController: UIViewController {
   }
   
   private func landscapeLayout() {
-    strechyViewHeight.constant = StrechyViewConst.defaultHeight //navigationController?.navigationBar == nil ? 0 : 32
+    strechyViewHeight.constant = hasNavigationBar ? StrechyViewConst.defaultHeight : 0
     strechyViewAspectRatio.isActive = false
     strechyViewHeadPosition.constant = 0
     strechyViewControllingViewVerticalSpace.constant = 0
