@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/PLStrechyViewController.svg?style=flat)](http://cocoapods.org/pods/PLStrechyViewController)
 
 ## Description
-PLStrechyVieController is A simple view controller which contains a strechy UIView and a UITextField. The strechy effect is a autolayout based animation and it support both portrait and landscape orientation.
+PLStrechyVieController is a simple view controller which contains a strechy UIView and a UITextField. The strechy effect is a autolayout based animation and it support both portrait and landscape orientation.
 
 ## Demo
 
