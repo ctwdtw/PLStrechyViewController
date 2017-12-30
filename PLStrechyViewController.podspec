@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PLStrechyViewController'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A simple view controller which contains a strechy UIView and a UITextField'
 
 # This description is used to generate tags and improve search results.
