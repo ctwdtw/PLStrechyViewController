@@ -160,8 +160,17 @@ extension PLStrechyViewController {
         let height = UIScreen.main.bounds.size.height
         let trueWidht = min(width, height)
         return trueWidht/5*3
-      } else {
+      } else if UIDevice.current.orientation.isLandscape {
         return PLStrechyViewController.navigationBarHeight
+      } else {
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        
+        if width > height {
+          return 0
+        } else {
+          return width/5*3
+        }
       }
     }
     static var maxHeight: CGFloat {

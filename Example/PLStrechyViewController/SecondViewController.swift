@@ -19,9 +19,9 @@ class SecondViewController: PLStrechyViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    super.viewWillTransition(to: size, with: coordinator)
-  }
+//  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//    super.viewWillTransition(to: size, with: coordinator)
+//  }
   
   /*
    // MARK: - Navigation
